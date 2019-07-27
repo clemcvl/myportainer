@@ -1,0 +1,36 @@
+{% load static %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
+
+{% block content %}
+{% csrf_token %}
+
+<div class="container">
+<form action="/polls/templates/toto" method="post">
+	{% csrf_token %}
+	{% for vars in containers %}
+	{{ form.as_p }}
+	<p><br></p>
+
+		
+		<li clars="list-group-item">
+		{{ vars.name }}
+			{% for field in form %}
+				<div class="fieldWrapper">
+				</div>
+			{% endfor %}
+		{{ form }}
+		{% for field in form %}
+		<label class="switch">
+			<p>{{ field }}</p>
+			<span class="slider"></span>
+		{% endfor %}
+		</label>
+	{% endfor %}
+	<p><br></p>
+	<input type="submit" value="Submit">
+</form>
+</div>
+{% endblock %}
